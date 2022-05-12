@@ -6,14 +6,21 @@ using CodeMonkey.Utils;
 public class PlayerAimWeapon : MonoBehaviour
 {
     private Transform aimTransform;
-
+    private Animator aimAnimator;
 
     private void Awake()
     {
         aimTransform = transform.Find("Aim");
+        aimAnimator = aimTransform.GetComponent<Animator>();
     }
 
     private void Update()
+    {
+        HandleAiming();
+        HandleShooting();
+    }
+
+    private void HandleAiming()
     {
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
 
@@ -21,5 +28,12 @@ public class PlayerAimWeapon : MonoBehaviour
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
         Debug.Log(angle);
+    }
+    private void HandleShooting()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            aimAnimator.SetTrigger("Shoot");
+        }
     }
 }
