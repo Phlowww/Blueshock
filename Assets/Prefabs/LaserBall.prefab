@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2029009022464238661}
   m_Layer: 6
   m_Name: LaserBall
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b64dd5edb3e3e34089601310f9ead1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
 --- !u!50 &2029009022464238661
 Rigidbody2D:
   serializedVersion: 4
