@@ -26,7 +26,9 @@ public class EnemyAI : MonoBehaviour
         ai.SetDestination(target.position);
         if(enemyHealth.hp <= 0)
         {
+
             Destroy(gameObject);
+            ScoreManager.instance.AddScore();
         }
     }
 
@@ -35,6 +37,8 @@ public class EnemyAI : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             enemyHealth.TakeDamage(Random.Range(10f, 20f));
+
+
         }
     }
 }

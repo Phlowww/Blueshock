@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerManager : MonoBehaviour
         if (playerHealth.hp <= 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene(1);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
