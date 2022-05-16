@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-
+    private bool isPaused = false;
+    public GameObject pauseScreen;
+    public GameObject deathScreen;
     private Health playerHealth;
     // Start is called before the first frame update
     void Start()
@@ -20,8 +22,11 @@ public class PlayerManager : MonoBehaviour
         if (playerHealth.hp <= 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene(1);
+            deathScreen.SetActive(true);
         }
+
+        PauseScreen();
+        HandlePauseTime();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,6 +41,27 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             playerHealth.TakeDamage(0.5f);
+        }
+    }
+
+    public void PauseScreen()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            pauseScreen.SetActive(isPaused);
+        }
+    }
+
+    private void HandlePauseTime()
+    {
+        if (isPaused == true)
+        {
+            Time.timeScale = 0;
+        }
+        else if(isPaused == false)
+        {
+            Time.timeScale = 1;
         }
     }
 }
