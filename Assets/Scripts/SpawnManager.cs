@@ -8,11 +8,12 @@ public class SpawnManager : MonoBehaviour
     private int enemiesToSpawn;
     public GameObject[] spawnPoints;
     public GameObject enemy;
+    public int numberOfEnemies;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemiesToSpawn = 5;
+        enemiesToSpawn = numberOfEnemies;
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         Spawn();
     }

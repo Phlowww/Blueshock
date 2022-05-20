@@ -438,6 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2044633865}
   highscoreText: {fileID: 384302490}
+  score: 0
+  highscore: 0
 --- !u!114 &457175911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,6 +3144,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 511904897, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 703856812}
+    - target: {fileID: 511904897, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 836772027}
     - target: {fileID: 2676348446832773183, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
       propertyPath: m_RootOrder
       value: 0

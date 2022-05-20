@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints: []
   enemy: {fileID: 3338002383154136068, guid: 55b4fc3b651bda844a5168f1a3dd2492, type: 3}
+  numberOfEnemies: 150

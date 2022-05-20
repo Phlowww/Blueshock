@@ -13,7 +13,9 @@ public class PlayerAimWeapon : MonoBehaviour
         public Vector3 shootPosition;
     }
 
-
+    public float fireRate = 0.35f;
+    private float fireTime = 0f;
+    private bool canFire = true;
 
     private Transform aimTransform;
     private Transform aimGunEndPointTransform;
@@ -33,6 +35,7 @@ public class PlayerAimWeapon : MonoBehaviour
     {
         HandleAiming();
         HandleShooting();
+        CheckCanFire();
     }
 
     private void HandleAiming()
@@ -57,7 +60,7 @@ public class PlayerAimWeapon : MonoBehaviour
     }
     private void HandleShooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && canFire == true)
         {
             Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
 
@@ -69,10 +72,28 @@ public class PlayerAimWeapon : MonoBehaviour
             });*/
 
             SpawnLaserball();
+            fireTime = fireRate;
         }
 
 
     }
+
+    protected void CheckCanFire()
+    {
+        fireTime -= Time.deltaTime;
+
+        if (fireTime <= 0)
+        {
+            canFire = true;
+            fireTime = 0;
+        }
+        else
+        {
+            canFire = false;
+        }
+    }
+    
+
 
     private void SpawnLaserball()
     {
