@@ -7,6 +7,9 @@ public class BlasterChanger : MonoBehaviour
 
     public Sprite stageOneBlaster;
     public Sprite stageTwoBlaster;
+    public Sprite stageThreeBlaster;
+    public Sprite stageFourBlaster;
+    public Sprite stageFiveBlaster;
     private SpriteRenderer spriteRenderer;
     public PlayerAimWeapon fireController;
     // Start is called before the first frame update
@@ -26,7 +29,7 @@ public class BlasterChanger : MonoBehaviour
         if (ScoreManager.instance.score >= 50)
         {
             spriteRenderer.sprite = stageTwoBlaster;
-            fireController.fireRate = 0.01f;
+            fireController.fireRate = 0.3f;
         }
     }
 }
