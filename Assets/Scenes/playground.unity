@@ -3259,6 +3259,14 @@ PrefabInstance:
       propertyPath: pauseScreen
       value: 
       objectReference: {fileID: 836772027}
+    - target: {fileID: 2003070233056698418, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003070233056698418, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2676348446832773183, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3331,6 +3339,10 @@ PrefabInstance:
     - target: {fileID: 6516791414062845524, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
       propertyPath: m_Name
       value: SpawnManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516791414062845525, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
+      propertyPath: numberOfEnemies
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6516791414062845530, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
       propertyPath: m_RootOrder

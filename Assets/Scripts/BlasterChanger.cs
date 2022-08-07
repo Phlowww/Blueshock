@@ -26,10 +26,26 @@ public class BlasterChanger : MonoBehaviour
 
     public void ChangeBlaster()
     {
-        if (ScoreManager.instance.score >= 50)
+        if (ScoreManager.instance.score >= 150)
         {
             spriteRenderer.sprite = stageTwoBlaster;
-            fireController.fireRate = 0.3f;
+            fireController.fireRate = 15f;
+        }
+
+        if (ScoreManager.instance.score >= 500)
+        {
+          spriteRenderer.sprite = stageThreeBlaster;
+          fireController.fireRate = 0.3f;
+        }
+        if (ScoreManager.instance.score >= 1500)
+        {
+          spriteRenderer.sprite = stageFourBlaster;
+          fireController.fireRate = 0.002f;
+        }
+        if (ScoreManager.instance.score >= 3000)
+        {
+          spriteRenderer.sprite = stageFiveBlaster;
+          fireController.fireRate = 0.05f;
         }
     }
 }
