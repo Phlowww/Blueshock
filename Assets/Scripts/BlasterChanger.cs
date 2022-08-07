@@ -29,7 +29,7 @@ public class BlasterChanger : MonoBehaviour
         if (ScoreManager.instance.score >= 150)
         {
             spriteRenderer.sprite = stageTwoBlaster;
-            fireController.fireRate = 15f;
+            fireController.fireRate = .8f;
         }
 
         if (ScoreManager.instance.score >= 500)
@@ -45,7 +45,7 @@ public class BlasterChanger : MonoBehaviour
         if (ScoreManager.instance.score >= 3000)
         {
           spriteRenderer.sprite = stageFiveBlaster;
-          fireController.fireRate = 0.05f;
+          fireController.fireRate = 1;
         }
     }
 }

@@ -1325,6 +1325,18 @@ PrefabInstance:
       propertyPath: pauseScreen
       value: 
       objectReference: {fileID: 1570238418}
+    - target: {fileID: 1504515948, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: stageFiveBlaster
+      value: 
+      objectReference: {fileID: 21300000, guid: 783a2a218277c684183c2331f9dfa728, type: 3}
+    - target: {fileID: 1504515948, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: stageFourBlaster
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c0a591430fdff44798f291e285c21a3, type: 3}
+    - target: {fileID: 1504515948, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
+      propertyPath: stageThreeBlaster
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c0a591430fdff44798f291e285c21a3, type: 3}
     - target: {fileID: 2003070233056698418, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
