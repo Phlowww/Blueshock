@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
             enemyHealth.TakeDamage(Random.Range(10f, 20f));
         }
 
-      if (ScoreManager.instance.score >= 5000)
+      if (ScoreManager.instance.score >= 3000)
         {
             enemyHealth.TakeDamage(Random.Range(75f, 100f));
         }
