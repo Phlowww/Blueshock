@@ -3,65 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.Netcode;
+using UnityEngine.Networking;
+using Cinemachine;
 
-public class PlayerManager : MonoBehaviour
+
+public class PlayerManager : NetworkBehaviour
 {
     private bool isPaused = false;
     public GameObject pauseScreen;
     public GameObject deathScreen;
     private Health playerHealth;
+    
+
+
+    
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = GetComponentInChildren<Health>();
     }
 
+    
+
+    
+
     // Update is called once per frame
     void Update()
     {
-        if (playerHealth.hp <= 0)
+        if (IsLocalPlayer)
         {
-            Destroy(gameObject);
-            deathScreen.SetActive(true);
+            if (playerHealth.hp <= 0)
+            {
+                Destroy(gameObject);
+                deathScreen.SetActive(true);
+            }
         }
+
 
         PauseScreen();
         HandlePauseTime();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (IsLocalPlayer)
         {
-            playerHealth.TakeDamage(10f);
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                playerHealth.TakeDamage(10f);
+            }
         }
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (IsLocalPlayer)
         {
-            playerHealth.TakeDamage(0.5f);
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                playerHealth.TakeDamage(0.5f);
+            }
         }
+
     }
 
     public void PauseScreen()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (IsLocalPlayer)
         {
-            isPaused = !isPaused;
-            pauseScreen.SetActive(isPaused);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPaused = !isPaused;
+                pauseScreen.SetActive(isPaused);
+            }
         }
+
     }
 
     private void HandlePauseTime()
     {
-        if (isPaused == true)
+        if (IsLocalPlayer)
         {
-            Time.timeScale = 0;
+            if (isPaused == true)
+            {
+                Time.timeScale = 1;
+            }
+            else if (isPaused == false)
+            {
+                Time.timeScale = 1;
+            }
         }
-        else if(isPaused == false)
-        {
-            Time.timeScale = 1;
-        }
+
     }
 }

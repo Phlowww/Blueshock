@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using Unity.Netcode;
 
-public class EnemyPointer : MonoBehaviour
+public class EnemyPointer : NetworkBehaviour
 {
     private Transform targetPosition;
     private RectTransform pointerRectTransform;

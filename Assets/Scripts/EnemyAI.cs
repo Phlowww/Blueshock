@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Netcode;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : NetworkBehaviour
 {
 
     private Transform target;
@@ -16,15 +17,27 @@ public class EnemyAI : MonoBehaviour
         ai = GetComponent<NavMeshAgent>();
         ai.updateRotation = false;
         ai.updateUpAxis = false;
-        target = GameObject.FindWithTag("Player").transform;
+        if (GameObject.FindWithTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+
         enemyHealth = GetComponentInChildren<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ai.SetDestination(target.position);
-        if(enemyHealth.hp <= 0)
+        if (target == null && GameObject.FindWithTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+        else if (target != null)
+        {
+            ai.SetDestination(target.position);
+        }
+
+        if (enemyHealth.hp <= 0)
         {
 
             Destroy(gameObject);
@@ -35,15 +48,15 @@ public class EnemyAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-      if (collision.gameObject.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("Projectile"))
         {
             enemyHealth.TakeDamage(Random.Range(10f, 20f));
         }
 
-      if (ScoreManager.instance.score >= 3000)
+        if (ScoreManager.instance.score >= 3000)
         {
             enemyHealth.TakeDamage(Random.Range(75f, 100f));
         }
-        }
-
     }
+
+}

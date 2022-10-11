@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
     public float hp;
 

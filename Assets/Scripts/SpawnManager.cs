@@ -1,22 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : NetworkBehaviour
 {
 
     private int enemiesToSpawn;
     public GameObject[] spawnPoints;
+    public NetworkManager networkManager;
     public GameObject enemy;
+    public NetworkObject enemyNetworkObject;
     public int numberOfEnemies;
 
+    
     // Start is called before the first frame update
     void Start()
     {
         enemiesToSpawn = numberOfEnemies;
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        Spawn();
+        SpawnClientRpc();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -25,11 +30,12 @@ public class SpawnManager : MonoBehaviour
         {
             enemiesToSpawn += 5;
             //GameManager.Instance.NextWave();
-            Spawn();
+            SpawnClientRpc();
         }
     }
 
-    private void Spawn()
+    [ClientRpc]
+    private void SpawnClientRpc()
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {

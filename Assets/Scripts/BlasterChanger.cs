@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class BlasterChanger : MonoBehaviour
+public class BlasterChanger : NetworkBehaviour
 {
 
     public Sprite stageOneBlaster;
@@ -26,6 +27,7 @@ public class BlasterChanger : MonoBehaviour
 
     public void ChangeBlaster()
     {
+        
 
         if (ScoreManager.instance.score >= 0)
         {
