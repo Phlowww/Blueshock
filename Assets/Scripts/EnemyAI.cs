@@ -40,7 +40,7 @@ public class EnemyAI : NetworkBehaviour
         if (enemyHealth.hp <= 0)
         {
 
-            Destroy(gameObject);
+            NetworkObject.Destroy(gameObject);
             ScoreManager.instance.AddScore();
         }
     }

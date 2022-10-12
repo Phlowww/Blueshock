@@ -2792,9 +2792,17 @@ PrefabInstance:
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 6516791414062845525, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
+      propertyPath: networkManager
+      value: 
+      objectReference: {fileID: 1913062517}
+    - target: {fileID: 6516791414062845525, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
       propertyPath: numberOfEnemies
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6516791414062845525, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
+      propertyPath: enemyNetworkObject
+      value: 
+      objectReference: {fileID: 1448275488997403324, guid: 55b4fc3b651bda844a5168f1a3dd2492, type: 3}
     - target: {fileID: 6516791414062845530, guid: 2d49018816bb6294f85e62479f7af17c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4937,7 +4945,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkManager: {fileID: 1913062517}
-  player: {fileID: 2676348446832773187, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
   playerTransform: {fileID: 2676348446832773183, guid: 675d9acd846c9ca419cb30b8a7e53422, type: 3}
 --- !u!114 &1095146518
 MonoBehaviour:
@@ -9501,7 +9508,7 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 127.0.0.1
+    Address: 10.1.12.42
     Port: 7777
     ServerListenAddress: 
   DebugSimulator:

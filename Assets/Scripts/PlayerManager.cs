@@ -14,35 +14,33 @@ public class PlayerManager : NetworkBehaviour
     public GameObject pauseScreen;
     public GameObject deathScreen;
     private Health playerHealth;
-    
 
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = GetComponentInChildren<Health>();
+        pauseScreen.SetActive(false);
+        deathScreen.SetActive(false);
     }
 
-    
 
-    
+
+
 
     // Update is called once per frame
     void Update()
     {
-        if (IsLocalPlayer)
+
+
+        if (IsServer)
         {
-            if (playerHealth.hp <= 0)
-            {
-                Destroy(gameObject);
-                deathScreen.SetActive(true);
-            }
+            PauseScreenClientRpc();
         }
 
-
-        PauseScreen();
-        HandlePauseTime();
+        //HandlePauseTime();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -68,20 +66,37 @@ public class PlayerManager : NetworkBehaviour
 
     }
 
-    public void PauseScreen()
+    public void OnDeath()
     {
-        if (IsLocalPlayer)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
+
+        
+        
+            if (playerHealth.hp <= 0)
             {
-                isPaused = !isPaused;
-                pauseScreen.SetActive(isPaused);
+                NetworkObject.Destroy(NetworkObject);
+                deathScreen.SetActive(true);
+                
             }
-        }
+        
+
 
     }
 
-    private void HandlePauseTime()
+    [ClientRpc]
+    public void PauseScreenClientRpc()
+    {
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            pauseScreen.SetActive(isPaused);
+        }
+
+
+    }
+
+    /*private void HandlePauseTime()
     {
         if (IsLocalPlayer)
         {
@@ -95,5 +110,5 @@ public class PlayerManager : NetworkBehaviour
             }
         }
 
-    }
+    }*/
 }
