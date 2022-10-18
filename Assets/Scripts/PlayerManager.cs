@@ -13,7 +13,7 @@ public class PlayerManager : NetworkBehaviour
     private bool isPaused = false;
     public GameObject pauseScreen;
     public GameObject deathScreen;
-    private Health playerHealth;
+    [SerializeField] private Health playerHealth;
 
 
 
@@ -35,7 +35,7 @@ public class PlayerManager : NetworkBehaviour
     {
 
 
-        if (IsServer)
+        if (IsLocalPlayer)
         {
             PauseScreenClientRpc();
         }
@@ -69,15 +69,18 @@ public class PlayerManager : NetworkBehaviour
     public void OnDeath()
     {
 
-        
-        
+        if (IsLocalPlayer)
+        {
             if (playerHealth.hp <= 0)
             {
                 NetworkObject.Destroy(NetworkObject);
                 deathScreen.SetActive(true);
-                
+
             }
-        
+        }
+
+
+
 
 
     }
