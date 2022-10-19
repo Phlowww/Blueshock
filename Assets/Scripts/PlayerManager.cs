@@ -69,15 +69,15 @@ public class PlayerManager : NetworkBehaviour
     public void OnDeath()
     {
 
-        if (IsLocalPlayer)
-        {
+        
+        
             if (playerHealth.hp <= 0)
             {
                 NetworkObject.Destroy(NetworkObject);
                 deathScreen.SetActive(true);
 
             }
-        }
+        
 
 
 
@@ -89,12 +89,15 @@ public class PlayerManager : NetworkBehaviour
     public void PauseScreenClientRpc()
     {
 
+        
+        
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPaused = !isPaused;
+                pauseScreen.SetActive(isPaused);
+            }
+        
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            isPaused = !isPaused;
-            pauseScreen.SetActive(isPaused);
-        }
 
 
     }

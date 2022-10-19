@@ -91,7 +91,7 @@ public class PlayerAimWeapon : NetworkBehaviour
                     shootPosition = mousePosition,
                 });*/
 
-                SpawnLaserball();
+                SpawnLaserballServerRpc();
                 fireTime = fireRate;
             }
 
@@ -120,13 +120,14 @@ public class PlayerAimWeapon : NetworkBehaviour
     }
 
 
-
-    private void SpawnLaserball()
+    [ServerRpc]
+    private void SpawnLaserballServerRpc()
     {
-        if (IsLocalPlayer)
-        {
+        
+        
             GameObject clone = Instantiate(laserBall, aimGunEndPointTransform.position, aimGunEndPointTransform.rotation);
-        }
+            clone.GetComponent<NetworkObject>().Spawn();
+        
 
     }
 }

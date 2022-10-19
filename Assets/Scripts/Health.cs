@@ -8,6 +8,8 @@ public class Health : NetworkBehaviour
 {
     public float hp;
 
+    //public NetworkVariable<float> hp = new NetworkVariable<float>();
+
     private Slider healthBar;
     void Start()
     {
