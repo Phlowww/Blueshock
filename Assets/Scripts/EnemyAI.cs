@@ -41,7 +41,7 @@ public class EnemyAI : NetworkBehaviour
         {
 
             NetworkObject.Destroy(gameObject);
-            ScoreManager.instance.AddScore();
+            ScoreManager.instance.AddScoreClientRpc();
         }
     }
 
@@ -50,12 +50,12 @@ public class EnemyAI : NetworkBehaviour
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            enemyHealth.TakeDamage(Random.Range(10f, 20f));
+            enemyHealth.TakeDamageServerRpc(Random.Range(10f, 20f));
         }
 
         if (ScoreManager.instance.score >= 3000)
         {
-            enemyHealth.TakeDamage(Random.Range(75f, 100f));
+            enemyHealth.TakeDamageServerRpc(Random.Range(75f, 100f));
         }
     }
 

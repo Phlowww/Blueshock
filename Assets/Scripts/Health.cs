@@ -24,7 +24,9 @@ public class Health : NetworkBehaviour
         
     }
 
-    public void TakeDamage(float damageTaken)
+
+    [ServerRpc]
+    public void TakeDamageServerRpc(float damageTaken)
     {
         hp -= damageTaken;
         healthBar.value = hp;

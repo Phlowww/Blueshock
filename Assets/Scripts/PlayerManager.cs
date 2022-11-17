@@ -48,7 +48,7 @@ public class PlayerManager : NetworkBehaviour
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                playerHealth.TakeDamage(10f);
+                playerHealth.TakeDamageServerRpc(10f);
             }
         }
 
@@ -56,47 +56,46 @@ public class PlayerManager : NetworkBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (IsLocalPlayer)
+        if (IsServer)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                playerHealth.TakeDamage(0.5f);
+                playerHealth.TakeDamageServerRpc(0.5f);
             }
         }
 
     }
 
-    public void OnDeath()
-    {
 
-        
-        
+    [ClientRpc]
+    public void OnDeathClientRpc()
+    {
+        if (IsServer)
+        {
+
+
             if (playerHealth.hp <= 0)
             {
                 NetworkObject.Destroy(NetworkObject);
                 deathScreen.SetActive(true);
 
             }
-        
-
-
-
-
-
+        }
     }
 
     [ClientRpc]
     public void PauseScreenClientRpc()
     {
 
-        
-        
+
+        if (IsLocalPlayer)
+        {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 isPaused = !isPaused;
                 pauseScreen.SetActive(isPaused);
             }
-        
+        }
 
 
 

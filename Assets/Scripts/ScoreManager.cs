@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : NetworkBehaviour
 {
     public static ScoreManager instance;
 
@@ -31,7 +32,9 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public void AddScore()
+
+    [ClientRpc]
+    public void AddScoreClientRpc()
     {
         score += 1;
         scoreText.text = score.ToString() + " Score";
